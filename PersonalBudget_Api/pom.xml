@@ -13,7 +13,9 @@
 	<name>PersonalBudget_Api</name>
 	<description>Componente que pemite exponer los diferentes mecanimos de acceso a la aplicación Personal Budget</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>19</java.version>
+  		<sonar.organization>kemon97</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -41,5 +43,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
 </project>
