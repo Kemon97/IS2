@@ -23,6 +23,11 @@
   		<artifactId>PersonalBudget_CrossCutting</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>com.mipresupuesto.personalbudget</groupId>
+  		<artifactId>PersonalBudget_Entities</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
   <properties>
   	<sonar.organization>kemon97</sonar.organization>
