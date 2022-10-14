@@ -59,10 +59,13 @@ public class PersonDomain {
 		return secondSureName;
 	}
 	 public final String getLastName() {
-		 return getFirstSureName()+ " " + getSecondSureName();
+		 return (getFirstSureName()+ " " + getSecondSureName()).trim();
 	 }
 	 public final String getName() {
-		 return (getFirstName()+ " " + getMiddleName()).trim()+ " " + getLastName();
+		 return (getFirstName()+ " " + getMiddleName()).trim();
+	 }
+	 public final String getCompleteName() {
+		 return (getName()+ " " + getLastName()).trim();
 	 }
 	
 }
