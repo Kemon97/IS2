@@ -1,23 +1,44 @@
 package com.mipresupuesto.personalbudget.entities;
 
+import java.util.UUID;
+
+import com.mipresupuesto.personalbudget.crosscutting.UtilUUID;
 
 public class BudgetEntity {
 	
+	private UUID id;
 	private YearEntity year;
 	private PersonEntity person;
 	
-	
-	public YearEntity getYear() {
+	public BudgetEntity() {
+		setId(UtilUUID.DEFAULT_UUID);
+		setYear(year);
+		setPerson(person);
+	}
+	public final YearEntity getYear() {
 		return year;
 	}
-	public void setYear(YearEntity year) {
+	public final void setYear(YearEntity year) {
 		this.year = year;
 	}
-	public PersonEntity getPerson() {
+	public final PersonEntity getPerson() {
+		if(person==null) {
+			setPerson(new PersonEntity());
+		}
 		return person;
 	}
-	public void setPerson(PersonEntity person) {
+	public final void setPerson(PersonEntity person) {
 		this.person = person;
 	}
+	public final UUID getId() {
+		if(id==null) {
+			setId(UUID.randomUUID());
+		}
+		return id;
+	}
+	public final void setId(UUID id) {
+		this.id = id;
+	}
+	
 
 }
