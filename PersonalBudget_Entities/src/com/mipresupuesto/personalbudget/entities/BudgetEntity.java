@@ -32,7 +32,7 @@ public class BudgetEntity {
 	}
 	public final UUID getId() {
 		if(id==null) {
-			setId(UUID.randomUUID());
+			setId(UtilUUID.DEFAULT_UUID);
 		}
 		return id;
 	}

@@ -11,21 +11,40 @@ public final class UtilUUID {
 		super();
 	}
 	
-	public static final UUID getDfaultUUID(final UUID uuid) {
+	public static final UUID getDefaultUUID(final UUID uuid) {
 		return(uuid==null)? DEFAULT_UUID : uuid;
 	}
 	
 	public static final boolean isEqual(final UUID uuidOne, final UUID uuidTwo) {
-		return getDfaultUUID(uuidOne).equals(getDfaultUUID(uuidTwo));
+		return getDefaultUUID(uuidOne).equals(getDefaultUUID(uuidTwo));
 		
 	}
 	
 	public static final UUID getNewUUID() {
 		UUID uuid;
-		
 		do {
 			uuid = UUID.randomUUID();
-		} while ()
+		} while (isEqual(uuid, DEFAULT_UUID));
+		return uuid;
 	}
-	
+	 public static final UUID getUUIDFromString(final String uuidString) {
+		 
+		 UUID uuid = DEFAULT_UUID;
+		 if (uuidString == null && !"".equals(uuidString.trim())) {
+			 try {
+			 uuid = UUID.fromString(uuidString);
+			 }catch (IllegalArgumentException e) {
+				// TODO: handle exception
+			}
+		 }
+		 return uuid;
+	 }
+	 
+	 public static final String getStringFromUUID(final UUID uuid) {
+		 String uuidString = DEFAULT_UUID_STRING;
+		 if (uuid != null) {
+			 uuidString = uuid.toString();
+		 }
+			 return uuidString;
+	 }
 }

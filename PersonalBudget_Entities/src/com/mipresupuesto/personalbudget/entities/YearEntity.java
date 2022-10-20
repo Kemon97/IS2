@@ -27,6 +27,9 @@ public class YearEntity {
 	}
 
 	public final UUID getId() {
+		if(id==null) {
+			setId(UtilUUID.DEFAULT_UUID);
+		}
 		return id;
 	}
 

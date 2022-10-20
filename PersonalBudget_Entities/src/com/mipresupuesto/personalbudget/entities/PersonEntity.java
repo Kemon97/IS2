@@ -40,6 +40,9 @@ public class PersonEntity {
 		setCompleteName(completeName);
 	}
 	public final UUID getId() {
+		if(id==null) {
+			setId(UtilUUID.DEFAULT_UUID);
+		}
 		return id;
 	}
 	public final String getIdCard() {
