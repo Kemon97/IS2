@@ -29,7 +29,7 @@ public class PersonDomain {
 		this.id = (id==null) ? UUID.randomUUID(): id;
 	}
 	private void setIdCard(String idCard) {
-		this.idCard = (idCard == null) ? PersonDomainBuilder.get(): idCard;
+		this.idCard = (idCard == null) ? "" : idCard.trim();
 	}
 	private void setFirstName(String firstName) {
 		this.firstName = firstName;

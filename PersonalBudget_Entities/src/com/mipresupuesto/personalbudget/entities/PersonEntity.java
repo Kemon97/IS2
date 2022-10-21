@@ -2,18 +2,36 @@ package com.mipresupuesto.personalbudget.entities;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.mipresupuesto.personalbudget.crosscutting.UtilUUID;
 
+
+@Entity
+@Table(name = "person")
 public class PersonEntity {
 	
+	@Id
+	@Column (name = "id")
 	private UUID id;
+	@Column (name = "idCard")
 	private String idCard;
+	@Column (name = "firstName")
 	private String firstName;
+	@Column (name = "middleName")
 	private String middleName;
+	@Column (name = "firstSurname")
 	private String firstSurname;
+	@Column (name = "secondSurname")
 	private String secondSurname;
+	@Column (name = "name")
 	private String name;
+	@Column (name = "lastName")
 	private String lastName;
+	@Column (name = "completeName")
 	private String completeName;
 	
 	
