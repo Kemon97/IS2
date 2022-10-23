@@ -24,6 +24,5 @@ public class CreateBudgetUseCaseImpl implements CreateBudgetUseCase {
 		
 	}
 	
-	
 
 }
