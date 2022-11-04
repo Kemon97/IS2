@@ -1,48 +1,71 @@
 package com.mipresupuesto.personalbudget.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mipresupuesto.personalbudget.aplication.command.interfaces.CreateBudgetPort;
+import com.mipresupuesto.personalbudget.controller.response.Response;
+import com.mipresupuesto.personalbudget.controller.response.dto.Message;
 import com.mipresupuesto.personalbudget.dto.BudgetDTO;
-import com.mipresupuesto.personalbudget.entities.BudgetEntity;
-import com.mipresupuesto.personalbudget.infrastructure.repository.sql.BudgetRepository;
+
 
 @RestController
 @RequestMapping("api/v1/budget")
 public class BudgetController {
-	
+
 	@Autowired
 	private CreateBudgetPort createBudgetPort;
 	
 	@PostMapping
-	public BudgetDTO createBudget(@RequestBody BudgetDTO budget) {
+	public ResponseEntity<Response<BudgetDTO>> create(@RequestBody BudgetDTO budget) {
+		
+		ResponseEntity<Response<BudgetDTO>> responseEntity;
+		Response<BudgetDTO> response = new Response<>();
+		HttpStatus statusCode = HttpStatus.OK;
+		
+				
+		try {
+			createBudgetPort.excute(budget);
+			
+			response.addMessage(Message.createSuccessMessage("El budget se ha creado de forma satisfactoria"));
+		} catch (final Exception excepcion) {
+			statusCode = HttpStatus.BAD_REQUEST;
+			//si excepcion tiene mensaje de usuario, agrego el mensaje de usuario, sino, agrego un mensaje generico
+			response.addMessage(Message.createErrorMessage("Ha ocurrido un problema inesperado tratando de crear el presupuesto deseado..."));
+		}
+		
 		createBudgetPort.excute(budget);
-		return budget;
+		return new ResponseEntity<>(response,statusCode);
+		
 	}
 	
-	@GetMapping
-	public String saludar() {
-		return "Hola mundo";
-	}
-	
-	@Autowired
-	private BudgetRepository budgetRepository;
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String getReservation(@RequestParam(value="State", required=false) String State, Model model)
-	{
-		List<BudgetEntity> budgetList = new ArrayList<BudgetEntity>();
+	@GetMapping("/saludo")
+	public ResponseEntity<Response<BudgetDTO>> saludar(@RequestBody BudgetDTO budget) {
+		
+		ResponseEntity<Response<BudgetDTO>> responseEntity;
+		Response<BudgetDTO> response = new Response<>();
+		HttpStatus statusCode = HttpStatus.OK;
+		
+				
+		try {
+			createBudgetPort.excute(budget);
+			
+			response.addMessage(Message.createSuccessMessage("El budget se ha creado de forma satisfactoria"));
+		} catch (final Exception excepcion) {
+			statusCode = HttpStatus.BAD_REQUEST;
+			//si excepcion tiene mensaje de usuario, agrego el mensaje de usuario, sino, agrego un mensaje generico
+			response.addMessage(Message.createErrorMessage("Ha ocurrido un problema inesperado tratando de crear el presupuesto deseado..."));
+		}
+		
+		createBudgetPort.excute(budget);
+		return new ResponseEntity<>(response,statusCode);
+
 	}
 
 }

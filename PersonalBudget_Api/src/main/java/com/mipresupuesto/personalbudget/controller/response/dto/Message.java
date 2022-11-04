@@ -5,48 +5,77 @@ import com.mipresupuesto.personalbudget.controller.response.enumeration.MessageL
 public class Message {
 	
 	private String text;
-	private MessageLevel level;
 	private String title;
-	public Message(String text, MessageLevel level, String title) {
+	private MessageLevel level;
+	
+	
+	public Message(String text, String title, MessageLevel level) {
 		super();
 		setText(text);
-		setLevel(level);
 		setTitle(title);
+		setLevel(level);
 	}
 	
-	public static Message createMessage(final String text, final MessageLevel level, final String title) {
-		return new Message(text, level, title);
+	public static Message createMessage(final String text, final String title, final MessageLevel level)  {
+		return new Message(text, title, level);
 	}
 	
-	public static Message createFatalMessage(final String text, final String level, final String title) {
-		return new Message();
+	public static Message createMessage(final String text, final MessageLevel level)  {
+		return new Message(text, text, level);
 	}
-
-	public String getText() {
+	
+	
+	public static Message createFatalMessage(final String text)  {
+		return new Message(text, text, MessageLevel.FATAL);
+	}
+	
+	
+	public static Message createErrorMessage(final String text)  {
+		return new Message(text, text, MessageLevel.ERROR);
+	}
+	public static Message createWarningMessage(final String text)  {
+		return new Message(text, text, MessageLevel.WARNING);
+	}
+	public static Message createInformationMessage(final String text)  {
+		return new Message(text, text, MessageLevel.INFORMATION);
+	}
+	public static Message createSuccessMessage(final String text)  {
+		return new Message(text, text, MessageLevel.SUCCESS);
+	}
+	
+	public final String getText() {
 		return text;
 	}
-	public String getLevel() {
-		return level;
-	}
-	public String getTitle() {
+	public final String getTitle() {
 		return title;
 	}
+	public final MessageLevel getLevel() {
+		return level;
+	}
 	private final void setText(final String text) {
-		if(text==null || "".intern() == text.intern().trim()) {
-			this.text = "";
-		}else {
-			this.text = text.trim();
+		
+		if(title == null || "".intern() == title.intern().trim()) {
+			this.title = "";
+		}
+		else {
+			this.title = title.trim();
 		}
 	}
-	private void setLevel(MessageLevel level) {
-		if(text==null) {
-			this.text = MessageLevel;
-		}else {
-			this.text = text.trim();
+	private final void setTitle(final String title) {
+		if(title == null || "".intern() == title.intern().trim()) {
+			this.title = "";
+		}
+		else {
+			this.title = title.trim();
 		}
 	}
-	private void setTitle(String title) {
-		this.title = title;
+	private final void setLevel(final MessageLevel level) {
+		if(title == null) {
+			this.level = MessageLevel.FATAL;
+		}
+		else {
+			this.level = level;
+		}
 	}
 	
 	

@@ -7,7 +7,7 @@ public abstract class CompositeSpecification<T> implements Specification<T>{
     }
 
     public CompositeSpecification<T> and(Specification<T> specification) {
-        return new AndSpecification<>(this, specification);
+        return new BudgetAndSpecification<>(this, specification);
     }
 
     public CompositeSpecification<T> not() {
