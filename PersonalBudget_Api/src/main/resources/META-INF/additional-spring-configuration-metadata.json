@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "InstrumentationKey",
+    "type": "java.lang.String",
+    "description": "A description for 'InstrumentationKey'"
+  },
+  {
+    "name": "InstrumentationKey",
+    "type": "java.lang.String",
+    "description": "A description for 'InstrumentationKey'"
+  }
+]}

@@ -17,7 +17,7 @@ public final class BudgetDomain {
 		setYear(year);
 		setPerson(person);
 	}
-	public static final BudgetDomain builder(final UUID id, final YearDomain year, final PersonDomain person) {
+	public static final BudgetDomain create(final UUID id, final YearDomain year, final PersonDomain person) {
 		return new BudgetDomain(id, year, person);
 	}
 	private final void setYear(YearDomain year) {

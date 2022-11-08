@@ -1,4 +1,4 @@
-package com.mipresupuesto.personalbudget.application.specification;
+package com.mipresupuesto.personalbudget.application.service.specification;
 
 public interface Specification<T> {
 	

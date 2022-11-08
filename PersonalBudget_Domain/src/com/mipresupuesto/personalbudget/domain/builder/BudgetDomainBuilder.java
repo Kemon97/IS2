@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import static com.mipresupuesto.personalbudget.crosscutting.UtilUUID.DEFAULT_UUID;
 import static com.mipresupuesto.personalbudget.crosscutting.UtilUUID.getDefaultUUID;
+
+import com.mipresupuesto.personalbudget.domain.BudgetDomain;
 import com.mipresupuesto.personalbudget.domain.PersonDomain;
 import com.mipresupuesto.personalbudget.domain.YearDomain;
 
@@ -50,6 +52,10 @@ public class BudgetDomainBuilder {
 		return person;
 	}
 	
+
+	public BudgetDomain build() {
+		return BudgetDomain.create(id,year,person);
 	
+	}
 
 }

@@ -2,20 +2,35 @@ package com.mipresupuesto.personalbudget.application.usecase.implementation;
 
 import com.mipresupuesto.personalbudget.application.usecase.entityassembler.EntityAssembler;
 import com.mipresupuesto.personalbudget.domain.BudgetDomain;
+import com.mipresupuesto.personalbudget.domain.builder.BudgetDomainBuilder;
 import com.mipresupuesto.personalbudget.entities.BudgetEntity;
 
 public class BudgetEntityAssembler implements EntityAssembler<BudgetEntity, BudgetDomain> {
 
 	@Override
 	public BudgetDomain assembleDomain(BudgetEntity entity) {
-		// TODO Auto-generated method stub
-		return null;
+		BudgetDomain domain = BudgetDomainBuilder.get().build();
+		
+		if(entity != null) {
+			domain = BudgetDomainBuilder.get()
+					.setId(entity.getId())
+					
+					.build();
+		}
+		
+	
+		return domain;
 	}
 
 	@Override
 	public BudgetEntity assembleEntity(BudgetDomain domain) {
-		// TODO Auto-generated method stub
-		return null;
+		BudgetEntity entity = new BudgetEntity();
+			
+			if(domain != null) {
+				entity = new BudgetEntity();
+						
+			}
+			return entity;
 	}
 
 }
